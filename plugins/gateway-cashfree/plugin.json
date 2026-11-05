@@ -1,0 +1,11 @@
+{
+  "id": "gateway-cashfree",
+  "name": "Cashfree gateway",
+  "version": "1.0.0",
+  "description": "Cashfree Payments (India): UPI, cards, netbanking and wallets through Cashfree Payment Links, signed webhooks, full or partial refunds, and chargeback notifications.",
+  "author": "Steward",
+  "type": "payment_gateway",
+  "engine": ">=0.1.0 <2.0.0",
+  "main": "index.js",
+  "permissions": ["gateway", "http:sandbox.cashfree.com", "http:api.cashfree.com"]
+}

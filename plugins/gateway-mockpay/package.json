@@ -1,0 +1,7 @@
+{
+  "name": "@steward-plugins/gateway-mockpay",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Example payment gateway plugin: a template for adding regional gateways (Paddle, PayU, Cashfree, ...) without touching billing core."
+}

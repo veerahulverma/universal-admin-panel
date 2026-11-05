@@ -1,0 +1,10 @@
+{
+  "name": "@steward-plugins/gateway-cashfree",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Cashfree Payments payment gateway plugin: hosted checkout, signed webhooks and refunds.",
+  "scripts": {
+    "test": "node --test"
+  }
+}

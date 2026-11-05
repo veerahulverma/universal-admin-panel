@@ -1,0 +1,11 @@
+{
+  "id": "gateway-paddle",
+  "name": "Paddle gateway",
+  "version": "1.0.0",
+  "description": "Paddle Billing as merchant of record: one-off transactions paid on Paddle Checkout, signed webhooks, and full or partial refunds through adjustments.",
+  "author": "Steward",
+  "type": "payment_gateway",
+  "engine": ">=0.1.0 <2.0.0",
+  "main": "index.js",
+  "permissions": ["gateway", "http:api.paddle.com", "http:sandbox-api.paddle.com"]
+}

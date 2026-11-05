@@ -1,0 +1,7 @@
+{
+  "name": "@steward-plugins/slack-notifications",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Posts payments, cancellations and security alerts to a Slack channel."
+}

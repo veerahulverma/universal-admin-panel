@@ -1,0 +1,10 @@
+{
+  "name": "@steward-plugins/gateway-paddle",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Paddle Billing payment gateway plugin: transaction checkout, signed webhooks and refunds through adjustments.",
+  "scripts": {
+    "test": "node --test"
+  }
+}

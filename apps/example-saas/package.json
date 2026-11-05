@@ -1,0 +1,17 @@
+{
+  "name": "@steward/example-saas",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minimal SaaS app showing a full Steward integration (users, gating, metering, checkout, webhooks, impersonation).",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/server.ts",
+    "dev": "tsx watch src/server.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Steward Admin",
+    "slug": "steward-admin",
+    "scheme": "steward-admin",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "com.example.stewardadmin",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "Unlock Steward Admin with Face ID."
+      }
+    },
+    "android": {
+      "package": "com.example.stewardadmin"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      ["expo-local-authentication", { "faceIDPermission": "Unlock Steward Admin with Face ID." }]
+    ]
+  }
+}

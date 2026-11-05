@@ -1,0 +1,7 @@
+{
+  "name": "@steward-plugins/hello-world",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Example extension plugin: events, routes, an admin page, a scheduled job and an entitlements hook."
+}

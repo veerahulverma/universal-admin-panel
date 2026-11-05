@@ -1,0 +1,32 @@
+{
+  "id": "push-notifications",
+  "name": "Push notifications",
+  "version": "1.0.0",
+  "description": "Delivers push notifications to your customers' phones, apps and websites through OneSignal or Firebase Cloud Messaging. Steward decides who is notified (one customer, bulk sends from Marketing, automatic payment and renewal alerts); this plugin delivers them.",
+  "author": "Steward",
+  "type": "integration",
+  "engine": ">=0.1.0 <2.0.0",
+  "main": "index.js",
+  "permissions": ["push", "settings", "secrets", "http:api.onesignal.com", "http:oauth2.googleapis.com", "http:fcm.googleapis.com"],
+  "secrets": [
+    { "key": "onesignal_api_key", "label": "OneSignal REST API key", "required": false },
+    { "key": "firebase_service_account", "label": "Firebase service account key (the JSON file's contents)", "required": false }
+  ],
+  "settingsSchema": {
+    "type": "object",
+    "properties": {
+      "onesignalAppId": {
+        "type": "string",
+        "title": "OneSignal App ID",
+        "description": "From OneSignal → Settings → Keys & IDs. Leave empty to not use OneSignal.",
+        "maxLength": 100
+      },
+      "onesignalIdentity": {
+        "type": "string",
+        "enum": ["user_id", "external_id"],
+        "title": "How your app identifies customers to OneSignal",
+        "description": "The id your app passes to OneSignal.login(): the Steward user id, or your own user id (the customer's external id in Steward)."
+      }
+    }
+  }
+}

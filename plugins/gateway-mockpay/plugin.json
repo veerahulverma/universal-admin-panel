@@ -1,0 +1,11 @@
+{
+  "id": "gateway-mockpay",
+  "name": "MockPay gateway (example)",
+  "version": "1.0.0",
+  "description": "A complete example gateway plugin with hosted checkout, signed webhooks and refunds. Copy it to integrate any payment provider.",
+  "author": "Steward",
+  "type": "payment_gateway",
+  "engine": ">=0.1.0 <2.0.0",
+  "main": "index.js",
+  "permissions": ["gateway", "routes", "kv"]
+}

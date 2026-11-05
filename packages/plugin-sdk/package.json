@@ -1,0 +1,12 @@
+{
+  "name": "@steward/plugin-sdk",
+  "version": "0.1.0",
+  "description": "Types and test helpers for building Steward plugins",
+  "type": "module",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": ["src"],
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

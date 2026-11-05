@@ -1,0 +1,10 @@
+{
+  "name": "@steward-plugins/gateway-payu",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PayU India payment gateway plugin: hosted checkout, hash-verified callbacks and webhooks, refunds.",
+  "scripts": {
+    "test": "node --test"
+  }
+}

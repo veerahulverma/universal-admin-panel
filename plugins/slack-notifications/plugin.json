@@ -1,0 +1,20 @@
+{
+  "id": "slack-notifications",
+  "name": "Slack notifications",
+  "version": "1.0.0",
+  "description": "Posts new payments, cancellations and security alerts to a Slack channel through an incoming webhook.",
+  "author": "Steward",
+  "type": "integration",
+  "engine": ">=0.1.0 <2.0.0",
+  "main": "index.js",
+  "permissions": ["secrets", "settings", "http:hooks.slack.com", "events:payment.succeeded", "events:subscription.canceled", "events:security.alert"],
+  "secrets": [{ "key": "webhook_url", "label": "Slack incoming webhook URL", "required": true }],
+  "settingsSchema": {
+    "type": "object",
+    "properties": {
+      "notifyPayments": { "type": "boolean", "title": "Post successful payments" },
+      "notifyCancellations": { "type": "boolean", "title": "Post cancellations" },
+      "notifySecurity": { "type": "boolean", "title": "Post security alerts" }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+# Self-hosted Steward with PostgreSQL.
+#   1. cp .env.example .env  and set POSTGRES_PASSWORD, ENCRYPTION_KEYS, APP_URL
+#   2. docker compose up -d --build
+#   3. docker compose logs app | grep "setup token"   then open $APP_URL/setup
+# Put a TLS-terminating reverse proxy (Caddy, nginx, a cloud load balancer) in front for production.
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: steward
+      POSTGRES_DB: steward
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U steward -d steward"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      APP_URL: ${APP_URL:-http://localhost:4000}
+      DATABASE_URL: postgres://steward:${POSTGRES_PASSWORD}@db:5432/steward
+      ENCRYPTION_KEYS: ${ENCRYPTION_KEYS:?Set ENCRYPTION_KEYS in .env (see .env.example)}
+      ENCRYPTION_ACTIVE_KEY: ${ENCRYPTION_ACTIVE_KEY:-}
+      # Behind a reverse proxy on the same host network
+      TRUST_PROXY: ${TRUST_PROXY:-1}
+      # Browsers accept Secure cookies on http://localhost; set false only for plain-HTTP non-localhost testing.
+      COOKIE_SECURE: ${COOKIE_SECURE:-true}
+      SETUP_TOKEN: ${SETUP_TOKEN:-}
+      # The web process also runs background jobs; scale with the worker service below instead.
+      WORKER: "true"
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    ports:
+      - "${PORT:-4000}:4000"
+    volumes:
+      - appdata:/app/data
+
+  # Optional dedicated job worker: set WORKER=false on "app" and start with
+  #   docker compose --profile worker up -d
+  worker:
+    build: .
+    profiles: ["worker"]
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ["node", "apps/server/dist/cli.js", "worker"]
+    environment:
+      NODE_ENV: production
+      APP_URL: ${APP_URL:-http://localhost:4000}
+      DATABASE_URL: postgres://steward:${POSTGRES_PASSWORD}@db:5432/steward
+      ENCRYPTION_KEYS: ${ENCRYPTION_KEYS}
+      ENCRYPTION_ACTIVE_KEY: ${ENCRYPTION_ACTIVE_KEY:-}
+      WORKER_CONCURRENCY: ${WORKER_CONCURRENCY:-5}
+    volumes:
+      - appdata:/app/data
+
+volumes:
+  pgdata:
+  appdata:

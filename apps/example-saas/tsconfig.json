@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "noEmit": true,
+    "paths": {
+      "@steward/node": ["../../packages/sdk-node/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*.ts"]
+}

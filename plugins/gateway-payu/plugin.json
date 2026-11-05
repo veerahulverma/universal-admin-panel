@@ -1,0 +1,11 @@
+{
+  "id": "gateway-payu",
+  "name": "PayU India gateway",
+  "version": "1.0.0",
+  "description": "PayU India hosted checkout (UPI, cards, netbanking, wallets): hash-signed checkout form, payments confirmed with the Verify Payment API, hash-verified webhooks, and refunds.",
+  "author": "Steward",
+  "type": "payment_gateway",
+  "engine": ">=0.1.0 <2.0.0",
+  "main": "index.js",
+  "permissions": ["gateway", "routes", "kv", "http:test.payu.in", "http:info.payu.in"]
+}

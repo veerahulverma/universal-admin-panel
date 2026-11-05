@@ -1,0 +1,20 @@
+{
+  "id": "hello-world",
+  "name": "Hello World",
+  "version": "1.0.0",
+  "description": "Reference plugin showing every extension point: events, HTTP routes, an admin page, a scheduled job, storage and an entitlements hook.",
+  "author": "Steward",
+  "type": "extension",
+  "engine": ">=0.1.0 <2.0.0",
+  "main": "index.js",
+  "permissions": ["settings", "kv", "events:user.created", "routes", "jobs", "hooks:entitlements.resolve", "users:read"],
+  "settingsSchema": {
+    "type": "object",
+    "properties": {
+      "greeting": { "type": "string", "maxLength": 100, "title": "Greeting" },
+      "betaFeature": { "type": "string", "maxLength": 64, "title": "Feature key to unlock for beta users" },
+      "betaUsers": { "type": "array", "title": "User IDs in the beta" }
+    }
+  },
+  "adminPages": [{ "id": "overview", "title": "Hello World", "path": "/page" }]
+}

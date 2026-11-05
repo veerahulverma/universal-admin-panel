@@ -1,0 +1,10 @@
+{
+  "name": "@steward-plugins/push-notifications",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Push notification delivery through OneSignal or Firebase Cloud Messaging.",
+  "scripts": {
+    "test": "node --test"
+  }
+}
